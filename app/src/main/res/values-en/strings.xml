@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PracticaPuzzle</string>
+    <string name="enterName">Enter your name</string>
+    <string name="FirstLevelBtn">First level</string>
+    <string name="SecondLevelBtn">Second level</string>
+    <string name="ArrangePuzzle">Arrange the puzzle</string>
+    <string name="action_settings">Settings</string>
+</resources>

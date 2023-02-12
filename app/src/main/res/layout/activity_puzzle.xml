@@ -11,12 +11,132 @@
         android:id="@+id/ordenaNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
         android:text="Placeholder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/fila1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/fila2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:cropToPadding="true">
+
+            <ImageButton
+                android:id="@+id/pieza1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:onClick="cambiar"
+                android:src="@drawable/imagen1"
+                app:layout_constraintEnd_toStartOf="@+id/pieza2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/pieza2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen2"
+                app:layout_constraintEnd_toStartOf="@+id/pieza3"
+                app:layout_constraintStart_toEndOf="@+id/pieza1"
+                app:layout_constraintTop_toTopOf="@+id/pieza1"
+                android:onClick="cambiar"/>
+
+            <ImageButton
+                android:id="@+id/pieza3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen3"
+                app:layout_constraintEnd_toStartOf="@+id/pieza4"
+                app:layout_constraintStart_toEndOf="@+id/pieza2"
+                app:layout_constraintTop_toTopOf="@+id/pieza2"
+                android:onClick="cambiar"/>
+
+            <ImageButton
+                android:id="@+id/pieza4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pieza3"
+                app:layout_constraintTop_toTopOf="@+id/pieza3"
+                android:onClick="cambiar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fila2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="cambiar">
+
+            <ImageButton
+                android:id="@+id/pieza5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen1"
+                app:layout_constraintEnd_toStartOf="@+id/pieza6"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="cambiar"/>
+
+            <ImageButton
+                android:id="@+id/pieza6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen1"
+                app:layout_constraintEnd_toStartOf="@+id/pieza7"
+                app:layout_constraintStart_toEndOf="@+id/pieza5"
+                app:layout_constraintTop_toTopOf="@+id/pieza5"
+                android:onClick="cambiar"/>
+
+            <ImageButton
+                android:id="@+id/pieza7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen1"
+                app:layout_constraintEnd_toStartOf="@+id/pieza8"
+                app:layout_constraintStart_toEndOf="@+id/pieza6"
+                app:layout_constraintTop_toTopOf="@+id/pieza6"
+                android:onClick="cambiar"/>
+
+            <ImageButton
+                android:id="@+id/pieza8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/imagen1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pieza7"
+                app:layout_constraintTop_toTopOf="@+id/pieza7"
+                android:onClick="cambiar"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

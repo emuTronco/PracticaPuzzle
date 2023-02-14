@@ -7,4 +7,6 @@
     <string name="ArrangePuzzle">Mettre le puzzle en ordre</string>
     <string name="action_settings">Settings</string>
     <string name="numIntentos" formatted="false">Nombre d\'essais: %1$d</string>
+    <string name="terminado">Félicitations, vous avez terminé le puzzle!</string>
+    <string name="nuevoRecord">Nouveau record!</string>
 </resources>

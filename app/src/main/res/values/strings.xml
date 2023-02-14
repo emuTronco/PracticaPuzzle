@@ -14,4 +14,6 @@
     <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="numIntentos" formatted="false">Intentos: %1$d</string>
+    <string name="terminado">¡Enhorabuena, has completado el puzzle!</string>
+    <string name="nuevoRecord">¡Nuevo récord!</string>
 </resources>

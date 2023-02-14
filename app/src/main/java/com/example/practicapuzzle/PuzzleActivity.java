@@ -2,7 +2,10 @@ package com.example.practicapuzzle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +13,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class PuzzleActivity extends AppCompatActivity {
 
     TextView tv1, tvNumIntentos;
     ImageView ib1, ib2, ib3, ib4, ib5, ib6, ib7, ib8;
-    Drawable dw1, dw2, dw3, dw4, dw5, dw6, dw7, dw8;
+    ImageView dw1, dw2, dw3, dw4, dw5, dw6, dw7, dw8;
     boolean cambiar = false;
     int boton;
     int aux = -1;
@@ -22,6 +27,11 @@ public class PuzzleActivity extends AppCompatActivity {
     boolean seleccionado = false;
     int numIntentos = 0;
     String mensajeIntentos;
+    ArrayList<ImageView> listaPiezas = new ArrayList<>();
+    ArrayList<ImageView> listaPiezasSol = new ArrayList<>();
+    int[] listaID = {R.drawable.imagen1, R.drawable.imagen2, R.drawable.imagen3, R.drawable.imagen4, R.drawable.imagen5, R.drawable.imagen6, R.drawable.imagen7, R.drawable.imagen8,};
+    String consultaMinPuntuacion = "SELECT minPuntuacion1 FROM Jugador WHERE nombre = ?;";
+    String nombreJugador = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,77 +42,94 @@ public class PuzzleActivity extends AppCompatActivity {
         mensajeIntentos = getString(R.string.numIntentos, numIntentos);
         tvNumIntentos.setText(mensajeIntentos);
 
+        nombreJugador = getIntent().getStringExtra("nombreJugador");
         tv1 = findViewById(R.id.ordenaNombre);
-        tv1.setText(getString(R.string.ArrangePuzzle).concat(" ").concat(getIntent().getStringExtra("nombreJugador")));
+        tv1.setText(getString(R.string.ArrangePuzzle).concat(" ").concat(nombreJugador));
 
         ib1 = findViewById(R.id.pieza1);
-        ib1.setImageResource(R.drawable.imagen1);
-        ib1.setTag(R.drawable.imagen1);
-        dw1 = ib1.getDrawable();
+
+        dw1 = ib1;
 
         ib2 = findViewById(R.id.pieza2);
-        ib2.setImageResource(R.drawable.imagen2);
-        ib2.setTag(R.drawable.imagen2);
-        dw2 = ib2.getDrawable();
+
+        dw2 = ib2;
 
         ib3 = findViewById(R.id.pieza3);
-        ib3.setImageResource(R.drawable.imagen3);
-        ib3.setTag(R.drawable.imagen3);
-        dw3 = ib3.getDrawable();
+
+        dw3 = ib3;
 
         ib4 = findViewById(R.id.pieza4);
-        ib4.setImageResource(R.drawable.imagen4);
-        ib4.setTag(R.drawable.imagen4);
-        dw4 = ib4.getDrawable();
+
+        dw4 = ib4;
 
         ib5 = findViewById(R.id.pieza5);
-        ib5.setImageResource(R.drawable.imagen5);
-        ib5.setTag(R.drawable.imagen5);
-        dw5 = ib5.getDrawable();
+
+        dw5 = ib5;
 
         ib6 = findViewById(R.id.pieza6);
-        ib6.setImageResource(R.drawable.imagen6);
-        ib6.setTag(R.drawable.imagen6);
-        dw6 = ib6.getDrawable();
+
+        dw6 = ib6;
 
         ib7 = findViewById(R.id.pieza7);
-        ib7.setImageResource(R.drawable.imagen7);
-        ib7.setTag(R.drawable.imagen7);
-        dw7 = ib7.getDrawable();
+
+        dw7 = ib7;
 
         ib8 = findViewById(R.id.pieza8);
-        ib8.setImageResource(R.drawable.imagen8);
-        ib8.setTag(R.drawable.imagen8);
-        dw8 = ib8.getDrawable();
 
-        ib1.setImageResource(R.drawable.imagen2);
-        ib1.setTag(R.drawable.imagen2);
-        ib2.setImageResource(R.drawable.imagen1);
-        ib2.setTag(R.drawable.imagen1);
+        dw8 = ib8;
+
+
+        listaPiezas.add(ib1);
+        listaPiezas.add(ib2);
+        listaPiezas.add(ib3);
+        listaPiezas.add(ib4);
+        listaPiezas.add(ib5);
+        listaPiezas.add(ib6);
+        listaPiezas.add(ib7);
+        listaPiezas.add(ib8);
+
+        randomizar(listaPiezas);
+
 
     }
 
-    private boolean puzzleTerminado(boolean terminado) {
-//        if (ib1.getDrawable() == dw1 && ib2.getDrawable().equals(R.drawable.imagen2) && ib3.getDrawable().equals(R.drawable.imagen3) && ib4.getDrawable().equals(R.drawable.imagen4) && ib5.getDrawable().equals(R.drawable.imagen5) && ib6.getDrawable().equals(R.drawable.imagen6) && ib7.getDrawable().equals(R.drawable.imagen7) && ib8.getDrawable().equals(R.drawable.imagen8)) {
-//            System.out.println("Terminado");
-//            terminado = true;
-//        }
-        System.out.println(dw4.equals(ib4));
-        System.out.println(dw1 == ib1.getDrawable());
-        return terminado;
+    private void puzzleTerminado() {
+        if ((int) ib1.getTag() == listaID[0] && (int) ib2.getTag() == listaID[1] && (int) ib3.getTag() == listaID[2] && (int) ib4.getTag() == listaID[3] && (int) ib5.getTag() == listaID[4] && (int) ib6.getTag() == listaID[5] && (int) ib7.getTag() == listaID[6] && (int) ib8.getTag() == listaID[7]) {
+            terminado = true;
+            TextView tv1 = findViewById(R.id.tvTerminado);
+            tv1.setVisibility(View.VISIBLE);
+            UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
+            SQLiteDatabase db = usdbh.getWritableDatabase();
+            ContentValues cv = new ContentValues();
+            Cursor c = db.rawQuery(consultaMinPuntuacion, new String[] {nombreJugador});
+            int minPuntuacion;
+            if (c.moveToFirst() && c.getCount() !=0) {
+                minPuntuacion = c.getInt(1);
+                if (numIntentos < minPuntuacion) {
+                    cv.put("minPuntuacion1", numIntentos);
+                    String clausula = "nombre= '" + nombreJugador + "'";
+                    db.update("Jugador", cv, clausula, null);
+                    tv1.findViewById(R.id.tvNewRecord);
+                    tv1.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
 
-    private void randomizar() {
-        ib2 = findViewById(R.id.pieza2);
-        ib2.setImageResource(R.drawable.imagen4);
-        ib2.setTag(R.drawable.imagen4);
-        ib3 = findViewById(R.id.pieza2);
-        ib2.setImageResource(R.drawable.imagen4);
-        ib2.setTag(R.drawable.imagen4);
+    private void randomizar(ArrayList<ImageView> lista) {
+        int indice;
+        for (int i = 0; i < 8; i++) {
+            indice = (int) (Math.random() * (8 - i));
+            lista.get(indice).setImageResource(listaID[i]);
+            lista.get(indice).setTag(listaID[i]);
+            lista.remove(indice);
+        }
     }
 
     public void cambiar(View v) {
+
+        puzzleTerminado();
 
         if (!terminado) {
 
@@ -155,7 +182,6 @@ public class PuzzleActivity extends AppCompatActivity {
                 aux = -1;
 
             }
-            puzzleTerminado(terminado);
             if (!seleccionado) {
                 seleccionado = true;
             } else {
@@ -166,6 +192,7 @@ public class PuzzleActivity extends AppCompatActivity {
             }
 
         }
+        puzzleTerminado();
     }
 
     private void moverHacia(ImageView ib) {

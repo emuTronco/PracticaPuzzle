@@ -75,13 +75,20 @@ public class PuzzleActivity extends AppCompatActivity {
         ib8.setTag(R.drawable.imagen8);
         dw8 = ib8.getDrawable();
 
+        ib1.setImageResource(R.drawable.imagen2);
+        ib1.setTag(R.drawable.imagen2);
+        ib2.setImageResource(R.drawable.imagen1);
+        ib2.setTag(R.drawable.imagen1);
+
     }
 
     private boolean puzzleTerminado(boolean terminado) {
-        if (ib1.getDrawable() == dw1 && ib2.getDrawable().equals(R.drawable.imagen2) && ib3.getDrawable().equals(R.drawable.imagen3) && ib4.getDrawable().equals(R.drawable.imagen4) && ib5.getDrawable().equals(R.drawable.imagen5) && ib6.getDrawable().equals(R.drawable.imagen6) && ib7.getDrawable().equals(R.drawable.imagen7) && ib8.getDrawable().equals(R.drawable.imagen8)) {
-            System.out.println("Terminado");
-            terminado = true;
-        }
+//        if (ib1.getDrawable() == dw1 && ib2.getDrawable().equals(R.drawable.imagen2) && ib3.getDrawable().equals(R.drawable.imagen3) && ib4.getDrawable().equals(R.drawable.imagen4) && ib5.getDrawable().equals(R.drawable.imagen5) && ib6.getDrawable().equals(R.drawable.imagen6) && ib7.getDrawable().equals(R.drawable.imagen7) && ib8.getDrawable().equals(R.drawable.imagen8)) {
+//            System.out.println("Terminado");
+//            terminado = true;
+//        }
+        System.out.println(dw4.equals(ib4));
+        System.out.println(dw1 == ib1.getDrawable());
         return terminado;
     }
 

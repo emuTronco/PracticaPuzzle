@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PracticaPuzzle</string>
     <string name="enterName">Enter your name</string>
     <string name="FirstLevelBtn">First level</string>
     <string name="SecondLevelBtn">Second level</string>
@@ -9,4 +8,7 @@
     <string name="numIntentos" formatted="false">Attempts: %1$d</string>
     <string name="terminado">Congratulations, you have completed the puzzle!</string>
     <string name="nuevoRecord">New record!</string>
+    <string name="puntuaciones">Scores</string>
+    <string name="atras">Back</string>
+    <string name="encenderMusica">Music on</string>
 </resources>

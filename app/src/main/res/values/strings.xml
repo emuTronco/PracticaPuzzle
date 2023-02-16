@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PracticaPuzzle</string>
+    <string name="app_name" translatable="false">PuzzleDavid</string>
     <string name="action_settings">Settings</string>
     <string name="enterName">Introduce tu nombre</string>
     <string name="FirstLevelBtn">Primer nivel</string>
@@ -16,4 +16,7 @@
     <string name="numIntentos" formatted="false">Intentos: %1$d</string>
     <string name="terminado">¡Enhorabuena, has completado el puzzle!</string>
     <string name="nuevoRecord">¡Nuevo récord!</string>
+    <string name="puntuaciones">Puntuaciones</string>
+    <string name="atras">Atrás</string>
+    <string name="encenderMusica">Música activada</string>
 </resources>

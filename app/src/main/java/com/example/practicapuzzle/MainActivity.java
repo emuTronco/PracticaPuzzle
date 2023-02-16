@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static int versionTabla = 1;
     private static boolean reiniciado = false;
+    private boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+
+    public void onClickPuntuaciones(View v) {
+        Intent i = new Intent(this, PuntuacionesActivity.class);
+        startActivity(i);
+    }
+
+    public void onClickMusica(View v) {
+        if (isPlaying) {
+            stopService(new Intent(MainActivity.this, BackgroundSoundService.class));
+            isPlaying = false;
+        } else {
+            startService(new Intent(MainActivity.this, BackgroundSoundService.class));
+            isPlaying = true;
+        }
+
+    }
+
 
     private void reiniciarBBDD() {
         this.deleteDatabase("DBUsuarios");

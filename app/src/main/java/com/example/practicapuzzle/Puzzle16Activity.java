@@ -3,22 +3,20 @@ package com.example.practicapuzzle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PuzzleActivity extends AppCompatActivity {
+public class Puzzle16Activity extends AppCompatActivity {
 
     TextView tv1, tvNumIntentos;
     ImageView ib1, ib2, ib3, ib4, ib5, ib6, ib7, ib8;
+    ImageView dw1, dw2, dw3, dw4, dw5, dw6, dw7, dw8;
     boolean cambiar = false;
     int boton;
     int aux = -1;
@@ -35,7 +33,7 @@ public class PuzzleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_puzzle);
+        setContentView(R.layout.activity_puzzle16);
 
         tvNumIntentos = findViewById(R.id.tvIntentos);
         mensajeIntentos = getString(R.string.numIntentos, numIntentos);
@@ -46,13 +44,37 @@ public class PuzzleActivity extends AppCompatActivity {
         tv1.setText(getString(R.string.ArrangePuzzle).concat(" ").concat(nombreJugador));
 
         ib1 = findViewById(R.id.pieza1);
+
+        dw1 = ib1;
+
         ib2 = findViewById(R.id.pieza2);
+
+        dw2 = ib2;
+
         ib3 = findViewById(R.id.pieza3);
+
+        dw3 = ib3;
+
         ib4 = findViewById(R.id.pieza4);
+
+        dw4 = ib4;
+
         ib5 = findViewById(R.id.pieza5);
+
+        dw5 = ib5;
+
         ib6 = findViewById(R.id.pieza6);
+
+        dw6 = ib6;
+
         ib7 = findViewById(R.id.pieza7);
+
+        dw7 = ib7;
+
         ib8 = findViewById(R.id.pieza8);
+
+        dw8 = ib8;
+
 
         listaPiezas.add(ib1);
         listaPiezas.add(ib2);
@@ -64,6 +86,7 @@ public class PuzzleActivity extends AppCompatActivity {
         listaPiezas.add(ib8);
 
         randomizar(listaPiezas);
+
 
     }
 

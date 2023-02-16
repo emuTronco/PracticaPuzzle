@@ -27,7 +27,6 @@ public class PuzzleActivity extends AppCompatActivity {
     int numIntentos = 0;
     String mensajeIntentos;
     ArrayList<ImageView> listaPiezas = new ArrayList<>();
-    ArrayList<ImageView> listaPiezasSol = new ArrayList<>();
     int[] listaID = {R.drawable.imagen1, R.drawable.imagen2, R.drawable.imagen3, R.drawable.imagen4, R.drawable.imagen5, R.drawable.imagen6, R.drawable.imagen7, R.drawable.imagen8,};
     String consultaMinPuntuacion = "SELECT * FROM Jugador WHERE nombre = ?";
     String nombreJugador = "";

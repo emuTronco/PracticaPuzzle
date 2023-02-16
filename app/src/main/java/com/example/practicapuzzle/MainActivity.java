@@ -30,10 +30,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickEmpezar(View v) {
+    public void onClickPrimerPuzzle(View v) {
         EditText et1 = findViewById(R.id.nombreUsuario);
         String nombre = et1.getText().toString();
         Intent i = new Intent(this, PuzzleActivity.class);
+        i.putExtra("nombreJugador", nombre);
+        UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+        String[] nombreArray = new String[]{nombre};
+        Cursor c = db.rawQuery("Select * FROM Jugador WHERE nombre = ?;", nombreArray);
+        if (!(c.moveToFirst())) {
+            String insertarUsuario = "INSERT into Jugador VALUES ('" + nombre + "',99,99);";
+            db.execSQL(insertarUsuario);
+        }
+        startActivity(i);
+
+    }
+
+    public void onClickSegundoPuzzle(View v) {
+        EditText et1 = findViewById(R.id.nombreUsuario);
+        String nombre = et1.getText().toString();
+        Intent i = new Intent(this, Puzzle16Activity.class);
         i.putExtra("nombreJugador", nombre);
         UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
